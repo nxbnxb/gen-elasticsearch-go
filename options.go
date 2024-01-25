@@ -51,13 +51,16 @@ type Options struct {
 	Others    []string
 }
 
-func EsSetQuery[T any](fn func(T) bool) func(key string, otype OptionsType, vals ...T) {
-	return func(key string, otype OptionsType, vals ...T) {
+func EsSetQuery[T any](fn func(T) bool) func(otype OptionsType, key string, vals ...T) {
+	return func(otype OptionsType, key string, vals ...T) {
 
 		return
 	}
 }
 
-func EsSetQueryShould[T any](fn func(T) bool) func(key string, otype OptionsType, vals ...T) {
+func EsSetQueryShould[T any](fn func(T) bool) func(o *Options) (otype OptionsType, key string, vals ...T) {
+	return func(o *Options) (otype OptionsType, key string, vals ...T) {
 
+		return
+	}
 }
